@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AutomatedSchedulingSystem.Models.Requests>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("My Schedule", "Index", "Schedule")</li>
+            <li>@Html.ActionLink("Create Shift", "Index", "Shifts")</li>
+            <li>@Html.ActionLink("Requests/Availability", "Index", "Requests")</li>
+            <li>@Html.ActionLink("Messaging", "About", "Home")</li>
+            <li>@Html.ActionLink("Staff", "Contact", "Home")</li>
+        </ul>
+    </div>
+    <div class="jumbotron">
+        <h1>CLEAN SLATE</h1>
+        <p class="lead">
+            Clean Slate is an easy to use scheduling application designed for restaurants and bars,
+            featuring an automatic schedule generator.
+        </p>
+        <p><a href="http://www.nfl.com" class="btn btn-primary btn-lg">Schedule in Seconds &raquo;</a></p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Automatic Schedule Generator</h2>
+            <p>
+                Clean Slate's powerful algorithm smartly creates schedules in seconds based off of just a few parameters entered in by you.
+                Taking into account availability, requests off, and more, making a schedule has never been more simple!
+            </p>
+            <p><a class="btn btn-default" href="http://www.serebii.net">The Algorithm &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Availability and Requests</h2>
+            <p>
+                Employees can easily adjust availabilities and submit request offs directly through Clean Slate. After a manager's approval, everything is all taken care of!
+                The days of sticky notes everywhere are over.
+            </p>
+            <p><a class="btn btn-default" href="http://www.serebii.net">Flexibility &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>View Your Schedule</h2>
+            <p>
+                Once created, managers and employees alike can view their various schedules.
+                Look at your own personal schedule, an entire week's schedule with all employees,
+                or view the employees that are working a given shift.
+            </p>
+            <p><a class="btn btn-default" href="http://www.serebii.net">Responsive &raquo;</a></p>
+        </div>
+    </div>

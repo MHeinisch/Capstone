@@ -1,0 +1,24 @@
+﻿@model AutomatedSchedulingSystem.Models.Requests
+@{
+    ViewBag.Title = "Requests";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div style="width: 100%;">
+    <div style="float:left; width: 50%">
+        <h3>Add Request:</h3>
+        <p>6/13/16-6/19/16</p>
+        @Html.TextArea("Reason")
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Register" />
+            </div>
+        </div>
+    </div>
+    <div style="float:left;">
+        <h3>My Requests:</h3> 
+        <p>@ViewBag.Message</p>
+    </div>
+</div>
+<div style="clear:both"></div>
