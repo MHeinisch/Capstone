@@ -26,7 +26,7 @@ namespace AutomatedSchedulingSystem.Models
         public string Status { get; set; }
         //Filled Dropped Pending
         
-        public virtual Employee EmployeeID { get; set; }        
+        public virtual Employee EmployeeID { get; set; }
        
         public virtual Day DayID { get; set; }       
 

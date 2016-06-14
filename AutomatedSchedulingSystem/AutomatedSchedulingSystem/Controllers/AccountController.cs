@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AutomatedSchedulingSystem.Models;
+using System.Collections.Generic;
 
 namespace AutomatedSchedulingSystem.Controllers
 {
@@ -141,7 +142,13 @@ namespace AutomatedSchedulingSystem.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            RegisterViewModel model = new RegisterViewModel()
+            {
+                PositionList = new List<SelectListItem>() {  new SelectListItem() { Text = "Associate", Value = "Associate" },
+                                                             new SelectListItem() { Text = "Manager", Value = "Manager" }}
+            };
+
+            return View(model);
         }
 
         //
@@ -168,9 +175,9 @@ namespace AutomatedSchedulingSystem.Controllers
                     newEmployee.Email = model.Email;
                     newEmployee.Username = model.Username;
                     newEmployee.Password = model.Password;
-                    newEmployee.Role = "Associate";
+                    //newEmployee.RoleID.ID = model.RoleID;
                     newEmployee.UserID = user.Id;
-
+                    newEmployee.Role = model.Role;
                     db.employee.Add(newEmployee);
 
                     Availability newAvailability = new Availability();

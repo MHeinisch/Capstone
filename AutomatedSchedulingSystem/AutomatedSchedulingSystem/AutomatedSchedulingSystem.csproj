@@ -204,9 +204,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Migrations\201606061627085_MVPMigration2.0.cs" />
-    <Compile Include="Models\Migrations\201606061627085_MVPMigration2.0.Designer.cs">
-      <DependentUpon>201606061627085_MVPMigration2.0.cs</DependentUpon>
+    <Compile Include="Migrations\201606131644291_UpdatedDatabases.cs" />
+    <Compile Include="Migrations\201606131644291_UpdatedDatabases.Designer.cs">
+      <DependentUpon>201606131644291_UpdatedDatabases.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -316,8 +316,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Models\Migrations\201606061627085_MVPMigration2.0.resx">
-      <DependentUpon>201606061627085_MVPMigration2.0.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606131644291_UpdatedDatabases.resx">
+      <DependentUpon>201606131644291_UpdatedDatabases.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

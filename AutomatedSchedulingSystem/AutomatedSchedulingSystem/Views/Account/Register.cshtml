@@ -41,6 +41,12 @@
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>
     </div>    
+        <div class="dropdown">            
+                @Html.DropDownListFor(m => m.Role, Model.PositionList)            
+        </div>
+        <div>
+            <p>If you are a manager, you may ignore the Availability section below.</p>
+        </div>
         <div class="checkbox">
             @Html.LabelFor(m => m.DayOfWeek, "Monday")            
             @Html.CheckBoxFor(m => m.IsAvailableMonday)               

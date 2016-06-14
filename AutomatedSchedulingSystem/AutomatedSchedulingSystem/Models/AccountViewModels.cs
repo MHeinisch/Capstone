@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace AutomatedSchedulingSystem.Models
 {
@@ -88,6 +89,12 @@ namespace AutomatedSchedulingSystem.Models
 
         public string DayOfWeek { get; set; }
 
+        [Required]
+        [Display(Name = "Position")]
+        public List<SelectListItem> PositionList = new List<SelectListItem>();
+
+        public string Role { get; set; }
+      
         public bool IsAvailableMonday { get; set; }
         public bool IsAvailableTuesday { get; set; }
         public bool IsAvailableWednesday { get; set; }

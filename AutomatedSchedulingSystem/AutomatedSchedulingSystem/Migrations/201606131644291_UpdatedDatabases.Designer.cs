@@ -7,18 +7,18 @@ namespace AutomatedSchedulingSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class MVPMigration20 : IMigrationMetadata
+    public sealed partial class UpdatedDatabases : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(MVPMigration20));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdatedDatabases));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606061627085_MVPMigration2.0"; }
+            get { return "201606131644291_UpdatedDatabases"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

@@ -25,17 +25,20 @@ namespace AutomatedSchedulingSystem.Controllers
 
             string currentUserID = User.Identity.GetUserId();
 
-            //allEmployees = (from employee in db.employee
-            //                where employee.UserID.Equals(currentUserID)
-            //                select (employee)).ToList<Employee>();
+            List<Employee> currentEmployee;
 
-            //userShifts = (from shift in db.shift
-            //              where shift.EmployeeID.ID.Equals(allEmployees[0].ID)
-            //              select (shift)).ToList<Shift>();            
+            string currentUser = System.Web.HttpContext.Current.User.Identity.Name;
 
-            userShifts.AddRange(db.shift.Where(x => true).ToList());
+            currentEmployee = (db.employee.Where(x => x.Email == currentUser).ToList());
 
-            return View(db.shift.Where(x => x.EmployeeID.UserID == currentUserID).ToList());          
+            if (currentEmployee[0].Role == "Associate")
+            {                
+                return View(db.shift.Where(x => x.EmployeeID.UserID == currentUserID).ToList());
+            }         
+            else
+            {
+                return View(db.shift);
+            }
 
         }
 
