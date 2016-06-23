@@ -14,19 +14,27 @@ namespace AutomatedSchedulingSystem.Controllers
         SlateDBContext db = new SlateDBContext();
 
         public ActionResult Index()
-        {
+        {                        
 
-            //bool loggedIn = User.Identity.IsAuthenticated;            
+            List<Employee> currentEmployee;
 
-            //if (loggedIn)
-            //{
-                
-            //    return View(loggedIn);
-            //}
-            //else
-            //{
+            string currentUser = System.Web.HttpContext.Current.User.Identity.Name;
+
+            currentEmployee = (db.employee.Where(x => x.Email == currentUser).ToList());
+
+            if (currentEmployee.Count == 0)
+            {
                 return View();
-            //}
+            }
+            else if (currentEmployee[0].Role == "Associate")
+            {
+                return View("AssociateIndex");
+            }
+            else
+            {
+                return View("ManagerIndex");
+            }          
+
         }
 
         public ActionResult About()

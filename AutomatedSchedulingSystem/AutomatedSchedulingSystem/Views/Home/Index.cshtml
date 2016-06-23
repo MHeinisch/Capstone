@@ -1,22 +1,12 @@
-﻿@model IEnumerable<AutomatedSchedulingSystem.Models.Requests>
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("My Schedule", "Index", "Schedule")</li>
-            <li>@Html.ActionLink("Create Shift", "Index", "Shifts")</li>
-            <li>@Html.ActionLink("Requests/Availability", "Index", "Requests")</li>
-            <li>@Html.ActionLink("Messaging", "About", "Home")</li>
-            <li>@Html.ActionLink("Staff", "Contact", "Home")</li>
-        </ul>
-    </div>
     <div class="jumbotron">
         <h1>CLEAN SLATE</h1>
-        <p class="lead">
+        <p class="lead">            
             Clean Slate is an easy to use scheduling application designed for restaurants and bars,
-            featuring an automatic schedule generator.
+            featuring an automatic schedule generator.            
         </p>
         <p><a href="http://www.nfl.com" class="btn btn-primary btn-lg">Schedule in Seconds &raquo;</a></p>
     </div>

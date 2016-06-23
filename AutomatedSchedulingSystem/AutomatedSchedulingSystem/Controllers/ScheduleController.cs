@@ -81,7 +81,7 @@ namespace AutomatedSchedulingSystem.Controllers
         }
 
         // GET: Schedule/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult ManagerEdit(int? id)
         {
             if (id == null)
             {
@@ -100,10 +100,28 @@ namespace AutomatedSchedulingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StartTime,EndTime,Type,Status")] Shift shift)
+        public ActionResult ManagerEdit(Shift shift)                                            //not properly updating the EmployeeID Foreign Key!!
         {
             if (ModelState.IsValid)
             {
+
+                List<Employee> newEmployee;
+
+                newEmployee = (db.employee.Where(x => x.Name == shift.EmployeeID.Name).ToList());
+
+                shift.EmployeeID = newEmployee[0];
+
+                db.employee.Attach(shift.EmployeeID);
+
+                var shiftInDb = db.shift.Include(s => s.EmployeeID)
+                    .SingleOrDefault(s => s.ID == shift.EmployeeID.ID);
+
+                if (shiftInDb != null)
+                {
+                    db.Entry(shiftInDb).CurrentValues.SetValues(shift);
+                    shiftInDb.EmployeeID = shift.EmployeeID;
+                }
+
                 db.Entry(shift).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

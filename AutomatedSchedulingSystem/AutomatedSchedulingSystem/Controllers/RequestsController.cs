@@ -30,7 +30,7 @@ namespace AutomatedSchedulingSystem.Controllers
 
             foreach (var item in db.request)
             {
-                if (item.EmployeeID.ID.Equals(User.Identity.GetUserId()))
+                if (item.EmployeeID.UserID.Equals(User.Identity.GetUserId()))
                 {
                     requests.Add(item);
                 }
@@ -73,11 +73,27 @@ namespace AutomatedSchedulingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Reason,Status")] Requests requests)
+        public ActionResult Create(Requests requests)
         {
+
+            List<Employee> currentEmployee;
+
+            string currentUser = System.Web.HttpContext.Current.User.Identity.Name;
+
+            currentEmployee = (db.employee.Where(x => x.Email == currentUser).ToList());
+
+            //List<Day> dayOfRequest;            
+
+            //dayOfRequest = (db.day.Where(x => x.DayOfWeek == requests.DayID.DayOfWeek).ToList());
+
             if (ModelState.IsValid)
             {
+                requests.EmployeeID = currentEmployee[0];
+                requests.Status = "Pending";                
+                List<Day> dayOfRequest = (db.day.Where(x => x.DayOfWeek == requests.DayID.DayOfWeek).ToList()); ;
+                requests.DayID = dayOfRequest[0];
                 db.request.Add(requests);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -92,7 +92,6 @@ namespace AutomatedSchedulingSystem.Controllers
                               where request.DayID.DayOfWeek.Equals("Sunday")
                               select (request)).ToList<Requests>();
 
-
             availabilityCountPerWeekDay.Add(mondayAvailability.Count - mondayRequests.Count);
             availabilityCountPerWeekDay.Add(tuesdayAvailability.Count - tuesdayRequests.Count);
             availabilityCountPerWeekDay.Add(wednesdayAvailability.Count - wednesdayRequests.Count);
@@ -170,75 +169,173 @@ namespace AutomatedSchedulingSystem.Controllers
                 switch (day)
                 {
                     case 1:
+
+                        for (int i = 0; i < mondayRequests.Count; i++)
+                        {
+                            for (int j = 0; j < mondayAvailability.Count; j++)
+                            {
+                                if (mondayRequests[i].EmployeeID == mondayAvailability[j].EmployeeID)
+                                {
+                                    mondayAvailability.Remove(mondayAvailability[j]);
+                                }
+                            }
+                        }
+
                         for (int i = 0; i < mondayShiftsToFill.Count; i++)
-                        {
-                            int employeeSelectMonday = random.Next(0, mondayAvailability.Count);
-                            mondayShiftsToFill[i].EmployeeID = mondayAvailability[employeeSelectMonday].EmployeeID;
-                            mondayShiftsToFill[i].Status = "Filled";
-                            mondayAvailability.RemoveAt(employeeSelectMonday);
-                            db.SaveChanges();
-                        }
+                            {
+                                int employeeSelectMonday = random.Next(0, mondayAvailability.Count);
+                                mondayShiftsToFill[i].EmployeeID = mondayAvailability[employeeSelectMonday].EmployeeID;
+                                mondayShiftsToFill[i].Status = "Filled";
+                                mondayAvailability.RemoveAt(employeeSelectMonday);
+                                db.SaveChanges();
+                            }
+
                         break;
+
                     case 2:
+
+                        for (int i = 0; i < tuesdayRequests.Count; i++)
+                        {
+                            for (int j = 0; j < tuesdayAvailability.Count; j++)
+                            {
+                                if (tuesdayRequests[i].EmployeeID == tuesdayAvailability[j].EmployeeID)
+                                {
+                                    tuesdayAvailability.Remove(tuesdayAvailability[j]);
+                                }
+                            }
+                        }
+
                         for (int i = 0; i < tuesdayShiftsToFill.Count; i++)
-                        {
-                            int employeeSelectTuesday = random.Next(0, tuesdayAvailability.Count);
-                            tuesdayShiftsToFill[i].EmployeeID = tuesdayAvailability[employeeSelectTuesday].EmployeeID;
-                            tuesdayShiftsToFill[i].Status = "Filled";
-                            tuesdayAvailability.RemoveAt(employeeSelectTuesday);
-                            db.SaveChanges();
-                        }
+                            {
+                                int employeeSelectTuesday = random.Next(0, tuesdayAvailability.Count);
+                                tuesdayShiftsToFill[i].EmployeeID = tuesdayAvailability[employeeSelectTuesday].EmployeeID;
+                                tuesdayShiftsToFill[i].Status = "Filled";
+                                tuesdayAvailability.RemoveAt(employeeSelectTuesday);
+                                db.SaveChanges();
+                            }
+
                         break;
+
                     case 3:
+
+                        for (int i = 0; i < wednesdayRequests.Count; i++)
+                        {
+                            for (int j = 0; j < wednesdayAvailability.Count; j++)
+                            {
+                                if (wednesdayRequests[i].EmployeeID == wednesdayAvailability[j].EmployeeID)
+                                {
+                                    wednesdayAvailability.Remove(wednesdayAvailability[j]);
+                                }
+                            }
+                        }
+
                         for (int i = 0; i < wednesdayShiftsToFill.Count; i++)
-                        {
-                            int employeeSelectWednesday = random.Next(0, wednesdayAvailability.Count);
-                            wednesdayShiftsToFill[i].EmployeeID = wednesdayAvailability[employeeSelectWednesday].EmployeeID;
-                            wednesdayShiftsToFill[i].Status = "Filled";
-                            wednesdayAvailability.RemoveAt(employeeSelectWednesday);
-                            db.SaveChanges();
-                        }
+                            {
+                                int employeeSelectWednesday = random.Next(0, wednesdayAvailability.Count);
+                                wednesdayShiftsToFill[i].EmployeeID = wednesdayAvailability[employeeSelectWednesday].EmployeeID;
+                                wednesdayShiftsToFill[i].Status = "Filled";
+                                wednesdayAvailability.RemoveAt(employeeSelectWednesday);
+                                db.SaveChanges();
+                            }
+
                         break;
+
                     case 4:
+
+                        for (int i = 0; i < thursdayRequests.Count; i++)
+                        {
+                            for (int j = 0; j < thursdayAvailability.Count; j++)
+                            {
+                                if (thursdayRequests[i].EmployeeID == thursdayAvailability[j].EmployeeID)
+                                {
+                                    thursdayAvailability.Remove(thursdayAvailability[j]);
+                                }
+                            }
+                        }
+
                         for (int i = 0; i < thursdayShiftsToFill.Count; i++)
-                        {
-                            int employeeSelectThursday = random.Next(0, thursdayAvailability.Count);
-                            thursdayShiftsToFill[i].EmployeeID = thursdayAvailability[employeeSelectThursday].EmployeeID;
-                            thursdayShiftsToFill[i].Status = "Filled";
-                            thursdayAvailability.RemoveAt(employeeSelectThursday);
-                            db.SaveChanges();
-                        }
+                            {
+                                int employeeSelectThursday = random.Next(0, thursdayAvailability.Count);
+                                thursdayShiftsToFill[i].EmployeeID = thursdayAvailability[employeeSelectThursday].EmployeeID;
+                                thursdayShiftsToFill[i].Status = "Filled";
+                                thursdayAvailability.RemoveAt(employeeSelectThursday);
+                                db.SaveChanges();
+                            }
+
                         break;
+
                     case 5:
+
+                        for (int i = 0; i < fridayRequests.Count; i++)
+                        {
+                            for (int j = 0; j < fridayAvailability.Count; j++)
+                            {
+                                if (fridayRequests[i].EmployeeID == fridayAvailability[j].EmployeeID)
+                                {
+                                    fridayAvailability.Remove(fridayAvailability[j]);
+                                }
+                            }
+                        }
+
                         for (int i = 0; i < fridayShiftsToFill.Count; i++)
-                        {
-                            int employeeSelectFriday = random.Next(0, fridayAvailability.Count);
-                            fridayShiftsToFill[i].EmployeeID = fridayAvailability[employeeSelectFriday].EmployeeID;
-                            fridayShiftsToFill[i].Status = "Filled";
-                            fridayAvailability.RemoveAt(employeeSelectFriday);
-                            db.SaveChanges();
-                        }
+                            {
+                                int employeeSelectFriday = random.Next(0, fridayAvailability.Count);
+                                fridayShiftsToFill[i].EmployeeID = fridayAvailability[employeeSelectFriday].EmployeeID;
+                                fridayShiftsToFill[i].Status = "Filled";
+                                fridayAvailability.RemoveAt(employeeSelectFriday);
+                                db.SaveChanges();
+                            }
+
                         break;
+
                     case 6:
+
+                        for (int i = 0; i < saturdayRequests.Count; i++)
+                        {
+                            for (int j = 0; j < saturdayAvailability.Count; j++)
+                            {
+                                if (saturdayRequests[i].EmployeeID == saturdayAvailability[j].EmployeeID)
+                                {
+                                    saturdayAvailability.Remove(saturdayAvailability[j]);
+                                }
+                            }
+                        }
+
                         for (int i = 0; i < saturdayShiftsToFill.Count; i++)
-                        {
-                            int employeeSelectSaturday = random.Next(0, saturdayAvailability.Count);
-                            saturdayShiftsToFill[i].EmployeeID = saturdayAvailability[employeeSelectSaturday].EmployeeID;
-                            saturdayShiftsToFill[i].Status = "Filled";
-                            saturdayAvailability.RemoveAt(employeeSelectSaturday);
-                            db.SaveChanges();
-                        }
+                            {
+                                int employeeSelectSaturday = random.Next(0, saturdayAvailability.Count);
+                                saturdayShiftsToFill[i].EmployeeID = saturdayAvailability[employeeSelectSaturday].EmployeeID;
+                                saturdayShiftsToFill[i].Status = "Filled";
+                                saturdayAvailability.RemoveAt(employeeSelectSaturday);
+                                db.SaveChanges();
+                            }
+
                         break;
+
                     case 7:
-                        for (int i = 0; i < sundayShiftsToFill.Count; i++)
+
+                        for (int i = 0; i < sundayRequests.Count; i++)
                         {
-                            int employeeSelectSunday = random.Next(0, sundayAvailability.Count);
-                            sundayShiftsToFill[i].EmployeeID = sundayAvailability[employeeSelectSunday].EmployeeID;
-                            sundayShiftsToFill[i].Status = "Filled";
-                            sundayAvailability.RemoveAt(employeeSelectSunday);
-                            db.SaveChanges();
+                            for (int j = 0; j < sundayAvailability.Count; j++)
+                            {
+                                if (sundayRequests[i].EmployeeID == sundayAvailability[j].EmployeeID)
+                                {
+                                    sundayAvailability.Remove(sundayAvailability[j]);
+                                }
+                            }
                         }
+
+                        for (int i = 0; i < sundayShiftsToFill.Count; i++)
+                            {
+                                int employeeSelectSunday = random.Next(0, sundayAvailability.Count);
+                                sundayShiftsToFill[i].EmployeeID = sundayAvailability[employeeSelectSunday].EmployeeID;
+                                sundayShiftsToFill[i].Status = "Filled";
+                                sundayAvailability.RemoveAt(employeeSelectSunday);
+                                db.SaveChanges();
+                            }
+
                         break;
+
                 }
             }
 
@@ -305,7 +402,7 @@ namespace AutomatedSchedulingSystem.Controllers
         }
 
         // GET: Shifts/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult ManagerEdit(int? id)
         {
             if (id == null)
             {
@@ -324,7 +421,7 @@ namespace AutomatedSchedulingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StartTime,EndTime,Type,Status")] Shift shift)
+        public ActionResult ManagerEdit(Shift shift)
         {
             if (ModelState.IsValid)
             {
